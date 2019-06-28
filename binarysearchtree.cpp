@@ -29,6 +29,66 @@ Node* Insert(Node* root,int item) {
 	}
 	return root;
 }
+void del(){
+
+
+}
+int MIN(Node * root){
+if(root == NULL){
+	cout << "Tree Underflow" << endl;
+}
+
+while(root -> left != NULL){
+	root = root ->left;
+}
+return root->item;
+}
+
+int MAX(Node * root){
+if(root == NULL){
+	cout << "Tree Underflow" << endl;
+}
+Node *root = root;
+while(root -> right != NULL){
+	root = root->right;
+}
+return root->item;
+}
+int HEIGHT(Node * root){
+	int height = 0;
+	if (root == NULL)
+	{
+		return -1;
+	}
+	else{
+	int lheight = HEIGHT(root->left);
+	int rheight = HEIGHT(root->right);
+    height = max(lheight, rheight) + 1;
+	}
+	return height;
+}
+int PrintLevel(Node * root,int level){
+if(root == NULL){
+	return -1;
+
+}
+if(level == 1){
+	return root->item;
+}
+else{
+	PrintLevel(root->left, level);
+	PrintLevel(root->right, level);
+}
+
+}
+
+int PrintLevelNode(Node * root ){
+	int h = HEIGHT(root);
+	for (int i = 0; i < h; i++){
+		cout << PrintLevel(root, i);
+	}
+}
+
 
 bool Search(Node* root,int item) {
     bool isPresent = false;
@@ -48,6 +108,7 @@ bool Search(Node* root,int item) {
 	}
     return isPresent;
 }
+
 int main() {
 	Node* root = NULL;  
 	
