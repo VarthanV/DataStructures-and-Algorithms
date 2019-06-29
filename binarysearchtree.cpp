@@ -58,7 +58,8 @@ int HEIGHT(Node * root){
 	int height = 0;
 	if (root == NULL)
 	{
-		return -1;
+		height = 0;
+		
 	}
 	else{
 	int lheight = HEIGHT(root->left);
