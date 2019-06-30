@@ -48,7 +48,7 @@ int MAX(Node * root){
 if(root == NULL){
 	cout << "Tree Underflow" << endl;
 }
-Node *root = root;
+
 while(root -> right != NULL){
 	root = root->right;
 }
@@ -68,13 +68,14 @@ int HEIGHT(Node * root){
 	}
 	return height;
 }
-int PrintLevel(Node * root,int level){
+void PrintLevel(Node * root,int level){
 if(root == NULL){
-	return -1;
+	cout << "Root is NULL" << endl;
+
 
 }
 if(level == 1){
-	return root->item;
+cout<< root->item<<endl;
 }
 else{
 	PrintLevel(root->left, level);
@@ -83,10 +84,31 @@ else{
 
 }
 
+void Preorder(Node * root){
+	
+	if (root != NULL)
+	{
+		cout << root->item << endl;
+		Preorder(root->left);
+		Preorder(root->right);
+}
+}
+
+void Inorder(Node *root){
+if(root != NULL){
+	Inorder(root->left);
+	cout << root->item;
+	Inorder(root->right);
+	
+
+}
+
+}
+
 int PrintLevelNode(Node * root ){
 	int h = HEIGHT(root);
 	for (int i = 0; i < h; i++){
-		cout << PrintLevel(root, i);
+		PrintLevel(root, i);
 	}
 }
 
@@ -116,7 +138,9 @@ int main() {
 	root = Insert(root,110);	
 	root = Insert(root,100);	
 	root = Insert(root,40);
+	root = Insert(root, 1000);
 
-    Search(root, 110) == true ? cout << "Elem Found"<<endl : cout << "Sorry Elem Not found" << endl; 
-
+	Search(root, 110) == true ? cout << "Elem Found"<<endl : cout << "Sorry Elem Not found" << endl;
+	cout << "Preorder Traversal"<<endl;
+	Preorder(root);
 }
