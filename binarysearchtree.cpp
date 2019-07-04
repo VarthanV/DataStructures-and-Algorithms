@@ -54,6 +54,7 @@ while(root -> right != NULL){
 }
 return root->item;
 }
+
 int HEIGHT(Node * root){
 	int height = 0;
 	if (root == NULL)
@@ -99,13 +100,13 @@ if(root != NULL){
 	Inorder(root->left);
 	cout << root->item;
 	Inorder(root->right);
-	
+
 
 }
 
 }
 
-int PrintLevelNode(Node * root ){
+void  PrintLevelNode(Node * root ){
 	int h = HEIGHT(root);
 	for (int i = 0; i < h; i++){
 		PrintLevel(root, i);
@@ -131,7 +132,14 @@ bool Search(Node* root,int item) {
 	}
     return isPresent;
 }
-
+int Nodes(Node * root){
+if(root == NULL){
+	return 0;
+}
+else{
+	return (Nodes(root->left) + Nodes(root->right)) + 1;
+}
+}
 int main() {
 	Node* root = NULL;  
 	
@@ -141,6 +149,8 @@ int main() {
 	root = Insert(root, 1000);
 
 	Search(root, 110) == true ? cout << "Elem Found"<<endl : cout << "Sorry Elem Not found" << endl;
+	Search(root, 200) == true ? cout << "Elem Found"<<endl : cout << "Sorry Elem Not found" << endl;
 	cout << "Preorder Traversal"<<endl;
 	Preorder(root);
+	cout << "Height is " << HEIGHT(root);
 }
